@@ -1,0 +1,10 @@
+.App{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 10%;
+}
+.App>div{
+    width: 50%;
+    border-radius: 1%;
+    border: 2px solid black;
+}

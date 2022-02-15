@@ -1,23 +1,25 @@
+import EditBullet from './components/EditBullet';
+import BulletPoint from './components/BulletPoint';
+import { useState } from 'react';
+import "./style/App.css"
 import logo from './logo.svg';
-import './App.css';
-
 function App() {
+  const [heading, setheading] = useState();
+  const [bullets, setbullets] = useState([]);
+  function fixBullet(text) {
+    if (text) {
+      setbullets([...bullets, text])
+    }
+
+  }
+  function removeBullet(index) {
+    bullets.splice(index, 1);
+    setbullets([...bullets]);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <EditBullet setheading={setheading} fixBullet={fixBullet} removeBullet={removeBullet} />
+      <BulletPoint heading={heading} bullets={bullets} />
     </div>
   );
 }
